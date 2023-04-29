@@ -108,8 +108,10 @@ class Deep_Sparse_Subspace_Clustering(nn.Module):
                 print('Alt-training completed')
 
         return self.Coef.detach().numpy()
+   
 
 
+#processing using h5 file:
 data_mat = h5py.File('Human1.h5')
 x = np.array(data_mat['X'])
 y = np.array(data_mat['Y'])
@@ -141,6 +143,7 @@ x_sd_median = np.median(x_sd)
 print("median of gene sd: %.5f" % x_sd_median)
 sd = 2.5
 
+#clustering
 net = Deep_Sparse_Subspace_Clustering(n_enc_1=256, n_enc_2=32, n_dec_1=32, n_dec_2=256, n_input=2000,
                                       n_z=10, denoise=False, sigma=2.0, pre_lr=0.002, alt_lr=0.001,
                                       adata=adata, pre_epoches=200, alt_epoches=100, lambda_1=1.0, lambda_2=0.5)
@@ -153,7 +156,7 @@ Coef = thrC(Coef_2, ro=1.0)
 pred_label, _ = post_proC(Coef, 14, 11, 7.0)
 y = y.astype(np.int64)
 pred_label = pred_label.astype(np.int64)
-eva(y, pred_label)
+eva(y, pred_label) #evaluate nmi, ari
 
 
 
