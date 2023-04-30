@@ -7,8 +7,9 @@ sc.settings.verbosity = 3 #hints
 sc.logging.print_header() #print stats
 sc.settings.set_figure_params(dpi=80, facecolor='white')
 
-pb3k = sc.read_h5ad("data/pbmc3k_raw.h5ad") #read tutorial dataset into anndata object
+#pb3k = sc.read_h5ad("data/pbmc3k_raw.h5ad") #read tutorial dataset into anndata object
 #adata = sc.read_h5ad("path/to/file.h5ad")
+pb3k = sc.read_10x_h5("data/human1.h5") #try .h5 instead
 
 def scanpycluster(adata, mode=0, results_file="results.h5ad"):
   #preprocess data
