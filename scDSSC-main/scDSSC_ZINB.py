@@ -109,7 +109,7 @@ class Deep_Sparse_Subspace_Clustering(nn.Module):
 
         return self.Coef.detach().numpy()
    
-
+'''
 
 #processing using h5 file:
 data_mat = h5py.File('Human1.h5')
@@ -158,7 +158,7 @@ y = y.astype(np.int64)
 pred_label = pred_label.astype(np.int64)
 eva(y, pred_label) #evaluate nmi, ari
 
-
+'''
 
 
 
